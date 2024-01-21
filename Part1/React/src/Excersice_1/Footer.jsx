@@ -2,6 +2,7 @@ import React from "react";
 
 export default function Footer(props){
     return(
-        <p>Number of exercises {props.exercises1 + props.exercises2 + props.exercises3}</p>
+        // number converts the string into int
+        <p>Number of exercises {Number(props.exercises1) + Number(props.exercises2) + Number(props.exercises3)}</p>
     )
 }
