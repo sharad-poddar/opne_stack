@@ -5,7 +5,7 @@ import Footer from './Excersice_1/Footer'
 
 export default function App_1(){
 
-    const course = 'Half Stack application development'
+    // const course = 'Half Stack application development'
     // const part1 = {
     //     name: 'Fundamentals of React',
     //     exercises: '10',
@@ -19,21 +19,39 @@ export default function App_1(){
     //     exercises: '14',
     // }
 
-    const parts = [
-        {
-            name: 'Fundamentals of React',
-            exercises: '10',
-        },{
-            name: 'Using props to pass data',
-            exercises: '7',
-        },{
-            name: 'State of a component',
-            exercises: '14',
-        },
-    ]
+    // const parts = [
+    //     {
+    //         name: 'Fundamentals of React',
+    //         exercises: '10',
+    //     },{
+    //         name: 'Using props to pass data',
+    //         exercises: '7',
+    //     },{
+    //         name: 'State of a component',
+    //         exercises: '14',
+    //     },
+    // ]
+
+    const info = {
+
+        course: 'Half Stack application development',
+        parts :[
+            {
+                name: 'Fundamentals of React',
+                exercises: '10',
+            },{
+                name: 'Using props to pass data',
+                exercises: '7',
+            },{
+                name: 'State of a component',
+                exercises: '14',
+            },
+        ]
+    }
+
 
     return(<div>
-        <Header title={course}/>
+        {/* <Header title={course}/> */}
 
         {/* <Content part={part1["name"]} exercises={part1["exercises"]}/>
         <Content part={part2["name"]} exercises={part2["exercises"]}/>
@@ -46,10 +64,17 @@ export default function App_1(){
         <Content part={parts[2].name} exercises={parts[2].exercises}/>
         <Footer exercises1={parts[0].exercises} exercises2={parts[1].exercises} exercises3={parts[2].exercises}/> */}
     
-        <Content props={parts[0]}/>
+        {/* <Content props={parts[0]}/>
         <Content props={parts[1]}/>
         <Content props={parts[2]}/>
-        <Footer exercises1={parts[0].exercises} exercises2={parts[1].exercises} exercises3={parts[2].exercises}/>
+        <Footer exercises1={parts[0].exercises} exercises2={parts[1].exercises} exercises3={parts[2].exercises}/> */}
+
+        <Header title={info.course}/>
+
+        <Content props={info.parts[0]}/>
+        <Content props={info.parts[1]}/>
+        <Content props={info.parts[2]}/>
+        <Footer exercises1={info.parts[0].exercises} exercises2={info.parts[1].exercises} exercises3={info.parts[2].exercises}/>
 
     </div>)
 }
