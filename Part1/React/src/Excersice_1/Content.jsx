@@ -1,9 +1,15 @@
 import React from "react";
 
-export default function Content(props){
+export default function Content({props}){
+
     return(
+
+        // <p>
+        //     {props.part} {props.exercises}
+        // </p>
+    
         <p>
-            {props.part} {props.exercises}
+            {props.name} {props.exercises}
         </p>
     )
 }
