@@ -6,6 +6,8 @@ import App_2 from './App_2.jsx'
 import App_3 from './App_3.jsx'
 import App_4 from './App_4.jsx'
 import App_5 from './App_5.jsx'
+import App_6 from './App_6.jsx'
+import App_7 from './App_7.jsx'
 
 // let counter = 1;
 // console.log(counter);
@@ -38,4 +40,4 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 // console.log(counter);
 
 
-root.render(<App_5/>);
+root.render(<App_7/>);
