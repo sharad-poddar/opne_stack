@@ -5,9 +5,9 @@ export default function App_4(){
     //1. onChanging the state variable the page rerenders
     const [counter, setCounter] = React.useState(0);
     
-    // const increment =()=>{
-    //     setCounter(counter => counter+1);
-    // }
+    const increment =()=>{
+        setCounter(counter => counter+1);
+    }
 
     //1. it will create huge problem as there is overlapping of infinite intervals
     // const intervalId = setInterval(()=>{
@@ -23,10 +23,15 @@ export default function App_4(){
 
     console.log(counter);
 
+
+    //1. on directly written of setCounter() then it makes rerendering of pages again and again
+    //2. onClick is eventhandler, increment is refrence of function
+    //3. proper way ()=>{setCounter(counter+1)}
     return(
         <div>
             <p>{counter}</p>
-            {/* <button onClick={increment}>inc++</button> */}
+            <button onClick={increment}>inc++</button>
+            <button onClick={()=>{setCounter(0)}}>set it to zero</button>
         </div>
     )
 }
