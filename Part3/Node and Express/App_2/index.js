@@ -19,6 +19,11 @@ let notes = [
     }
 ]
 
+// without this the body property would be undefined
+// it takes the req in json format and transform into js then attach to body
+app.use(express.json())
+
+
 // route-1
 // HTTP GET requests
 app.get('/',(req, res)=>{
@@ -66,8 +71,46 @@ app.get('/api/notes/:id',(req, res)=>{
     }
 })
 
+app.delete('/api/notes/:id',(req, res)=>{
+    const id = req.params.id;
+    notes = notes.filter(note=>id!=note.id);
+    res.status(204).end()
+})
+
+// on posting always specify the content-types
+app.post('/api/notes',(req, res)=>{
+    const note = req.body;
+    console.log(note);
+    
+    if(!body.content){
+        return res.status(400).json({
+            error: 'content missing' 
+        })
+    }else{
+        // notes.push({id: notes.length+1, ...note});
+        // setting up the important value as default as false
+        notes.push({
+            content: note.content,
+            important: Boolean(note.important) || false,
+            id: notes.length+1,
+        })
+        console.log(notes);
+        res.json(notes);
+    }
+})
 
 const PORT = 3000;
 app.listen(PORT,()=>{
     console.log(`server starts at: ${PORT}`);
 })
+
+
+
+
+
+// GET  	fetches a single resource
+// GET  	fetches all resources in the collection
+// POST 	creates a new resource based on the request data
+// DELETE	removes the identified resource
+// PUT  	replaces the entire identified resource with the request data
+// PATCH	replaces a part of the identified resource with the request data
