@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form onsubmit="handelFomr(event)">
+        <input type="text" id="name"/>
+        <input type= "number" id="number"/>
+        <button type="submit">send ME</button>
+    </form>
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
+    </script>
+    <script>
+        emailjs.init("NckaxpnafZbVArg3n");
+        function handelFomr(event){
+            event.preventDefault();
+            const name = document.getElementById('name');
+            const number = document.getElementById('number');
+
+            console.log(name.value, number.value);
+
+            const templateParams = {
+                to_name: 'sharad',
+                from_name: name.value,
+                message: 'hello hii'
+            };
+
+            emailjs.send('service_nzzei4a', 'template_2ptp5uz', templateParams, 'NckaxpnafZbVArg3n')
+            .then((response) => {
+                console.log('SUCCESS!', response.status, response.text);
+            }, (err) => {
+                console.log('FAILED...', err);
+            });
+        }
+    </script>
+    
+</body>
+</html>
