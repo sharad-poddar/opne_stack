@@ -1,4 +1,8 @@
 const express = require('express');
+const morgan = require('morgan');
+const cors = require('cors')
+require('dotenv').config();
+
 const app = express();
 
 const data = [
@@ -24,9 +28,28 @@ const data = [
     }
 ]
 
+//1. CORS
+//2. this allows any site to get the data, without matching the ports/ same-origin
+app.use(cors());
 
 // used to get body of req
 app.use(express.json());
+
+// defined by user
+morgan(function (tokens, req, res) {
+    return [
+      tokens.method(req, res),
+      tokens.url(req, res),
+      tokens.status(req, res),
+      tokens.res(req, res, 'content-length'), '-',
+      tokens['response-time'](req, res), 'ms'
+    ].join(' ')
+})
+// defined middle ware
+app.use(morgan(':method :url :status :res[content-length] - :response-time ms'));
+
+// predefined morgan middleware
+// app.use(morgan('tiny'));
 
 app.get('/',(req, res)=>{
     res.send('<p>go to /api/phonebook</p>');
@@ -88,7 +111,15 @@ app.post('/api/phonebook',(req, res)=>{
     }
 })
 
-const PORT = 3000;
+
+// this will run on wrong endpoint or that endpoint which we not defined yet
+const unknownEndPoint = (req, res)=>{
+    res.status(404).json({error: 'unknown endpoint'});
+}
+app.use(unknownEndPoint);
+
+
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, ()=>{
     console.log(`server starts at: ${PORT}`);
 })
