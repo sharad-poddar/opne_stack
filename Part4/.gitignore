@@ -1,2 +1,5 @@
 node_modules
 .env
+
+# we have to add node modules and .env in .gitignore before commit so that git
+# will not track this file, otherwise there is commands for stop tracking this files
