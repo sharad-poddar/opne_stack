@@ -21,6 +21,12 @@ router.get('/about', (req, res) => {
     res.send('About birds')
 })
 
+router.use((req, res, next)=>{
+    console.log('error')
+    res.json('error')
+    next()
+})
+
 
 // router used as a middleware
 app.use(router)
