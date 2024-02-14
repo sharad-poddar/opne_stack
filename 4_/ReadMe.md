@@ -82,3 +82,10 @@ sometime its organising is different as we can add whole notes array in respecti
 
 schema-less databases like Mongo require developers to make far more radical design decisions about data organization at the beginning of the project than relational databases with schemas. On average, relational databases offer a more or less suitable way of organizing data for many applications.
 
+
+### Creating users
+Let's implement a route for creating new users. Users have a unique username, a name and something called a passwordHash. The password hash is the output of a one-way hash function applied to the user's password. It is never wise to store unencrypted plain text passwords in the database!
+
+```
+    npm install bcrypt
+```
